@@ -38,3 +38,8 @@ Runkai Zhang (e-mail: [271013216[replace with at]qq.com]())
 
 This project is licensed under the [MIT] License - see the LICENSE.md file for details.
 
+## Citation
+
+If you like this repo, please rise me a star.
+
+We will update the citation info once the paper is accepted.
