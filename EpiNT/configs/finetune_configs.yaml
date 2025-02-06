@@ -1,0 +1,35 @@
+downstream_dataset: '/your/path/dataset/downstream_wo_sfreq_equal_cpres_chn.hdf5'
+RESULTS_DIR: '/your/path/'
+
+# Experiment Parameters
+experiment_name: 'linear_probing' # linear_probing or finetuning or last_layer
+seizure_task: 'hfo_ied_detec1' #'soz_loc' 'seiz_pred' 'seiz_detec' 'ied_detec' 'hfo_ied_detec1' 'hfo_ied_detec2'
+
+# Model Parameters
+model_name: 'EpiNT' 
+ablation: 'Model 1' # 'Model 2' - 'Model 7' 'Model 1' is the full model
+patch_mask: False # in finetuning, we don't need to mask the patches
+mask_ratio: 0 # in finetuning, we don't need to mask the patches
+head_dropout: 0.1
+task: 'classification'
+
+# Optimization Parameters
+optimizer_name: 'AdamW'
+lr_scheduler_type: 'onecyclelr'
+pct_start: 0.3
+init_lr: 0.0001 # 1e-3
+three_phase: False
+weight_decay: 0.05
+num_workers: 4
+max_norm: 5.0
+
+# Training Parameters
+max_epoch: 10
+train_ratio: 0.7
+
+# Data Parameters
+train_batch_size: 1024
+
+# Others
+# device: 1
+debug: True
