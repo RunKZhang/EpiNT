@@ -208,7 +208,7 @@ class Zenodo_neonatal:
             self.hd5dataset[self.ds_name][f'eeg{i}'].create_dataset('data', data=epoch_data)
             self.hd5dataset[self.ds_name][f'eeg{i}'].create_dataset('label', data=expanded_labels)
             
-class CHB_MIT: # FUCK YOU!!!!
+class CHB_MIT:
     # seizure prediction
     def __init__(self, hd5dataset):
         self.path = DATASETS_PATH['CHB_MIT']
