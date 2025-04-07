@@ -48,6 +48,8 @@ def remove_patient_groups(original_file, prefix):
         if os.path.exists(temp_file):
             os.remove(temp_file)
         print(f"Failed to delete and repack HDF5 file: {e}")
+        
+
 
 def reorganize_hdf5(path, batch_size=2048, chunk_batch=256, chunk_length=6144):
     """
@@ -89,7 +91,7 @@ def reorganize_hdf5(path, batch_size=2048, chunk_batch=256, chunk_length=6144):
                     idx += 1
         
         # By default, the last batch is droped
-        
+
     return temp_file
     
 if __name__ == "__main__":
