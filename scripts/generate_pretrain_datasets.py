@@ -5,9 +5,11 @@ import shutil
 import random
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from EpiNT.data.prep_pretrain_datasets import *
-from EpiNT.data.utils import h5Dataset
-from EpiNT.data.dataset_list import DATASETS_OUTPUT_PATH
+from epint.data.prep_pretrain_datasets import *
+from epint.data.utils import h5Dataset
+# from EpiNT.data.dataset_list import DATASETS_OUTPUT_PATH
+from yaml import CLoader as Loader
+from yaml import dump, load
 
 def print_hdf5_structure(f, indent=0):
     """Recursively print the structure of an HDF5 file with clear hierarchy."""
@@ -95,47 +97,28 @@ def reorganize_hdf5(path, batch_size=2048, chunk_batch=256, chunk_length=6144):
     return temp_file
     
 if __name__ == "__main__":
+    dataset_config_path = '../configs/dataset_configs.yaml'
+    with open(dataset_config_path, 'rb') as f:
+        dataset_config = load(f, Loader=Loader)
+
     # pretrain Dataset
-    hdf5_name = 'pretrain_wo_sfreq_cpres_chn'
-    # pretrain_dataset = h5Dataset(hdf5_name, os.path.join(DATASETS_OUTPUT_PATH, 'pretrain'))
-    pretrain_dataset = h5Dataset(hdf5_name, DATASETS_OUTPUT_PATH)
+    hdf5_name = 'pretrain_dataset'
+
+    pretrain_dataset = h5Dataset(hdf5_name, dataset_config['DATASETS_OUTPUT_PATH'])
     equal_sfreq = False # whether to resample the data to the same sampling frequency
     compress_chn = True # whether to compress the channel number
-    summary_df = OpenNeuro('DS003029', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS003498', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS003555', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS003844', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS003876', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS004100', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS004752', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = OpenNeuro('DS005398', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = Normal_EDF_EEG('TUEP', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = Normal_EDF_EEG('TUSZ', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = Normal_EDF_EEG('Siena', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)     
-    summary_df = Normal_EDF_EEG('JHCH_JHMCHH', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
-    summary_df = Normal_EDF_EEG('Mendeley', pretrain_dataset)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS003029', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS003498', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS003555', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS003844', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS003876', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS004100', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS004752', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = OpenNeuro('DS005398', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = Normal_EDF_EEG('TUEP', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = Normal_EDF_EEG('TUSZ', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = Normal_EDF_EEG('Siena', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)     
+    summary_df = Normal_EDF_EEG('JHCH_JHMCHH', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
+    summary_df = Normal_EDF_EEG('Mendeley', pretrain_dataset, dataset_config)._process_data(equal_sfreq=equal_sfreq, compress_chn=compress_chn)
     pretrain_dataset.save()
     
-    # output hdf5 file path
-    # hdf5_file_path =os.path.join(DATASETS_OUTPUT_PATH, 'pretrain', hdf5_name+'.hdf5')
-    hdf5_file_path =os.path.join(DATASETS_OUTPUT_PATH, hdf5_name+'.hdf5')
-    
-    # delete unwanted patients
-    # remove_patient_groups(hdf5_file_path, 'iEEG')
-
-    # check the structure of the HDF5 file
-    # with h5py.File(hdf5_file_path, 'r') as f:
-    #     print_hdf5_structure(f)
-    
-    # re-organize the HDF5 file to speed up data loading
-    # random.seed(666)
-    # reorg_file = reorganize_hdf5(hdf5_file_path, batch_size=2048, chunk_batch=128, chunk_length=int(duration * global_sfreq))
-
-    # Get .hd5 file size in terabytes (1 TB = 1024^4 bytes)
-    file_size = os.path.getsize(hdf5_file_path)
-    file_size_mb = file_size / (1024 ** 4)
-    print(f"File size: {file_size} bytes ({file_size_mb:.2f} TB)")
-    
-    # file_size = os.path.getsize(reorg_file)
-    # file_size_mb = file_size / (1024 ** 4)
-    # print(f"File size: {file_size} bytes ({file_size_mb:.2f} TB)")

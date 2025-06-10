@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epint"
+version = "0.1.0"
+description = "A deep learning model for EEG and iEEG epilepsy research"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+authors = [
+  { name = "Runkai Zhang", email = "271013216@email.com" }
+]
+dependencies = [
+  "torch",
+  "accelerate",
+  "numpy",
+  "scipy"
+]
+
+[project.urls]
+"Repository" = "https://github.com/RunKZhang/EpiNT"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["epint*"]
+exclude = ["assets", "configs", "dataset", "weights", "notebooks", "scripts"]

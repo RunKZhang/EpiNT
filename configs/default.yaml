@@ -1,0 +1,6 @@
+# Common hparameters
+patch_len: 256
+stride_len: 256
+sequence_len: 3072
+dropout: 0.1
+cls_token: True

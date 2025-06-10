@@ -1,0 +1,42 @@
+pretrain_dataset: '/home/ZRK/ZRK_ssd2/ZRK/Engineering_Server/Epileptogenic/dataset/pretrain_wo_sfreq_cpres_chn.hdf5'
+RESULTS_DIR: '/home/ZRK/sda_data/zrkdata/Epileptogenic_Results/'
+experiment_name: 'pretrain'
+
+# Model Parameters
+model_name: 'EpiNT'
+patch_mask: True
+head_dropout: 0.1
+task: 'pretrain' # pretrain
+d_model: 512
+dim_feedforward: 2048
+num_heads: 8
+num_layers: 6
+codebook_dim: 64
+codebook_size: 256
+mask_ratio: 0.3
+num_quantizer: 1
+
+# Optimization Parameters
+optimizer_name: 'AdamW'
+lr_scheduler_type: 'linearwarmupcosinelr'
+init_lr: 0.000002 # 2e-5
+min_lr: 0.000001 # 1e-5
+weight_decay: 0.05
+warmup_lr: 0.000001 # 1e-5
+warmup_steps: 1000
+lr_decay_rate: 0.9
+num_workers: 4
+max_norm: 5.0
+
+# Training Parameters
+interval: 3000
+max_opt_steps: 120000
+max_epoch: 4
+train_ratio: 0.9
+
+# Data Parameters
+train_batch_size: 1024
+
+# Others
+debug: True
+seed: 0
