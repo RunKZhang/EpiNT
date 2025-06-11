@@ -1,5 +1,5 @@
-pretrain_dataset: '/home/ZRK/ZRK_ssd2/ZRK/Engineering_Server/Epileptogenic/dataset/pretrain_wo_sfreq_cpres_chn.hdf5'
-RESULTS_DIR: '/home/ZRK/sda_data/zrkdata/Epileptogenic_Results/'
+pretrain_dataset: '/your/path/pretrain_dataset.hdf5'
+RESULTS_DIR: '/your/path/Results/'
 experiment_name: 'pretrain'
 
 # Model Parameters

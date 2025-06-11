@@ -14,12 +14,12 @@ JHCH_JHMCHH: '/your/path/JHCH_JHMCHH/'                               # yes      
 Mendeley: '/your/path/Mendeley/'                                     # yes                # https://data.mendeley.com/datasets/5pc2j46cbc/1
 
 # Downstream datasets
-FNUSA: '/home/ZRK/sda_data/zrkdata/FNUSA_Mayo/DATASET_FNUSA/'   # FNUSA SOZ localization                   # https://figshare.com/collections/_/4681208
-Mayo: '/home/ZRK/sda_data/zrkdata/FNUSA_Mayo/DATASET_MAYO/'                                                # https://figshare.com/collections/_/4681208
-iEEG_bids_figshare: '/home/ZRK/sda_data/zrkdata/iEEG_bids_figshare/'                 # yes                # https://figshare.com/articles/dataset/_b_Annotated_b_b_interictal_epileptiform_discharges_in_b_b_intracranial_EEG_iEEG_sleep_data_b_/26131978?file=49884138
-Zenodo_neonatal: '/home/ZRK/sda_data/zrkdata/Zenodo_neonatal/'                        # yes                # https://zenodo.org/records/1280684#.YQJpgI4zbIU
-CUK_IMHANS: '/home/ZRK/sda_data/zrkdata/CUK_IMHANS/'                                 # yes                # https://data.mendeley.com/preview/mtpb9j8npf?a=344b0905-b2df-45e5-b41e-fe05d903ed11
-CHB_MIT: '/home/ZRK/sda_data/zrkdata/CHB_MIT/physionet.org/files/chbmit/1.0.0/'      # yes                # https://physionet.org/content/chbmit/1.0.0/
+FNUSA: '/your/path/FNUSA_Mayo/DATASET_FNUSA/'   # FNUSA SOZ localization                   # https://figshare.com/collections/_/4681208
+Mayo: '/your/path/FNUSA_Mayo/DATASET_MAYO/'                                                # https://figshare.com/collections/_/4681208
+iEEG_bids_figshare: '/your/path/iEEG_bids_figshare/'                 # yes                # https://figshare.com/articles/dataset/_b_Annotated_b_b_interictal_epileptiform_discharges_in_b_b_intracranial_EEG_iEEG_sleep_data_b_/26131978?file=49884138
+Zenodo_neonatal: '/your/path/Zenodo_neonatal/'                        # yes                # https://zenodo.org/records/1280684#.YQJpgI4zbIU
+CUK_IMHANS: '/your/path/CUK_IMHANS/'                                 # yes                # https://data.mendeley.com/preview/mtpb9j8npf?a=344b0905-b2df-45e5-b41e-fe05d903ed11
+CHB_MIT: '/your/path/CHB_MIT/physionet.org/files/chbmit/1.0.0/'      # yes                # https://physionet.org/content/chbmit/1.0.0/
 
 # Output Path
-DATASETS_OUTPUT_PATH: '/home/ZRK/ZRK_ssd2/ZRK/Engineering_Server/EpiNT_npj_revision2/'
+DATASETS_OUTPUT_PATH: '~/ZRK/EpiNT/'

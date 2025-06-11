@@ -1,5 +1,5 @@
-downstream_dataset: '/home/ZRK/ZRK_ssd2/ZRK/Engineering_Server/Epileptogenic/dataset/downstream_wo_sfreq_equal_cpres_chn.hdf5'
-RESULTS_DIR: '/home/ZRK/sda_data/zrkdata/Epileptogenic_Results/'
+downstream_dataset: '/your/path/downstream_dataset.hdf5'
+RESULTS_DIR: '/your/path/Results/'
 
 # Experiment Parameters
 experiment_name: 'linear_probing' # linear_probing or finetuning or last_layer
