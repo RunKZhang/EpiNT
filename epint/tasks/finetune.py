@@ -144,7 +144,7 @@ class Finetune(Base):
         # calculate classification metrics
         metric_dict = {}
 
-        preds = torch.cat(preds, dim=0)[:,-1] # get Positive class
+        preds = torch.cat(preds, dim=0).softmax(dim=-1)[:, 1] # get the positive class probability
         # preds = torch.cat(preds, dim=0) # used when bce loss
         trues = torch.cat(trues, dim=0)
         # trues = trues.to(torch.long) # used when bce loss

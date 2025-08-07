@@ -169,6 +169,4 @@ class EpiNT(nn.Module):
             y = y.reshape(B, -1)
             y = self.drop(y)
             y = self.head(y)
-            y = F.softmax(y, dim=-1)
-            # y = y[:, -1]
             return y, cls_token
